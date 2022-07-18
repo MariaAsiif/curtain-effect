@@ -1,38 +1,142 @@
-.App {
-  text-align: center;
+/*--- flone preloader ---*/
+
+.flone-preloader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  z-index: 999999;
+  border: 1pt solid;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.flone-preloader {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  padding: 0;
+  text-align: left;
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -25px;
+  margin-top: -25px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.flone-preloader span {
+  position: absolute;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background: #7460ef;
+  -webkit-animation: preloader 1.3s linear infinite;
+  animation: preloader 1.3s linear infinite;
+}
+
+.flone-preloader span:last-child {
+  animation-delay: -0.8s;
+  -webkit-animation-delay: -0.8s;
+}
+
+@keyframes preloader {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1, 1);
+    opacity: 0;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@-webkit-keyframes preloader {
+  0% {
+    -webkit-transform: scale(0, 0);
+    opacity: 0.5;
+  }
+
+  100% {
+    -webkit-transform: scale(1, 1);
+    opacity: 0;
+  }
+}
+
+/*--- end of flone preloader ---*/
+
+
+.curtain {
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.curtain__wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.curtain__wrapper input[type=checkbox] {
+  position: absolute;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  opacity: 0;
+  top: 0;
+  left: 0;
+}
+
+.curtain__wrapper input[type=checkbox]:checked~div.curtain__panel--left {
+  transform: translateX(0);
+}
+
+.curtain__wrapper input[type=checkbox]:checked~div.curtain__panel--right {
+  transform: translateX(0);
+}
+
+.curtain__panel {
+  display: flex;
+  align-items: center;
+  background: orange;
+  color: #fff;
+  float: left;
+  position: relative;
+  width: 50%;
+  height: 100vh;
+  transition: all 1s ease-out;
+  z-index: 2;
+}
+
+.curtain__panel--left {
+  justify-content: flex-end;
+  transform: translateX(-100%);
+}
+
+.curtain__panel--right {
+  justify-content: flex-start;
+  transform: translateX(100%);
+}
+
+.curtain__content {
+  align-items: center;
+  background: #333;
+  color: #fff;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 100vh;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 1rem 0;
+  position: absolute;
+  text-align: center;
+  z-index: 1;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.curtain__content img {
+  width: 20%;
 }
