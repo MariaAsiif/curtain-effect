@@ -102,13 +102,13 @@
 .curtain__panel {
   display: flex;
   align-items: center;
-  background: orange;
+  background: black;
   color: #fff;
   float: left;
   position: relative;
   width: 50%;
   height: 100vh;
-  transition: all 1s ease-out;
+  transition: all 2s ease-out;
   z-index: 2;
 }
 
