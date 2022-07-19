@@ -1,36 +1,36 @@
-import { lazy } from 'react';
+import { lazy, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
-import './App.css';
-const Home = lazy(() => import("./pages/home"));
+import './src/assests/style.css';
+import Loader from './src/components/loader';
+const Home = lazy(() => import("./src/pages/home"));
 
 function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-      {/* <Suspense
-        fallback={
-          <div className="flone-preloader-wrapper">
-            <div className="flone-preloader">
-              <span></span>
-              <span></span>
-            </div>
-          </div>
-        }
-      > */}
-      {/* <Routes >
-          <Route
-            exact
-            path={process.env.PUBLIC_URL + "/"}
-            component={Home}
-          />
 
-        </Routes > */}
-      {/* </Suspense> */}
-    </Router>
-  );
+  // React State management hook
+  const [loading, setLoading] = useState(true )
+
+  // React UseEffect update data hook
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 5000);
+  }, [])
+
+  // on load page 
+  if (loading === true ) {
+    return <Loader />
+  }
+  else {
+    return (
+      <>
+        <Router>
+          <Routes >
+            <Route path="/" element={<Home />} />
+          </Routes >
+        </Router>
+      </>
+    );
+  }
 }
 
 export default App;
