@@ -17,8 +17,8 @@ const Home = () => {
                 </div>{" "}
                 {/* curtain__panel */}
                 <div className="curtain__content">
-                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/trophy.svg" alt="reward_img" />
-                    <h2>Achievement Unlocked!</h2>
+                    <img src="/assets/Images/logo-curtain.png" alt="reward_img" />
+                    <h2>Hamp Oil!</h2>
                 </div>
                 <div className={load ? "curtain__panel " : " curtain__panel curtain__panel--right"}>
 
